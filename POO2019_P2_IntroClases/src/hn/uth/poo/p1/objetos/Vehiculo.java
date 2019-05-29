@@ -112,4 +112,11 @@ public class Vehiculo {
                 this.precio
                 );
     }
+    
+    public boolean equals(Vehiculo vehiculo){
+        if (this.placa.equals(vehiculo.getPlaca())) {
+            return true;
+        }
+        return false;
+    }
 }
