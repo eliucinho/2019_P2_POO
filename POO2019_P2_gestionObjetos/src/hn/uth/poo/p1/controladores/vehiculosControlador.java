@@ -15,9 +15,23 @@ public class vehiculosControlador {
     private static int contador=0;
     private static Vehiculo[] datos=new Vehiculo[100];
     
+    public static void borrar(String placa){
+        for (int i = 0; i < datos.length; i++) {
+            Vehiculo tmp = datos[i];
+            if (tmp!=null && tmp.getPlaca().equals(placa)) {
+                datos[i]=null;
+            }
+        }
+    }
+    
     public static void guardar(Vehiculo vehiculo){
-        datos[contador]=vehiculo;
-        contador++;
+        for (int i = 0; i < datos.length; i++) {
+            Vehiculo dato = datos[i];
+            if (dato==null) {
+                datos[i]=vehiculo;
+                return;
+            }
+        }
     }
     
     public static Vehiculo[] consultar(){
@@ -35,6 +49,16 @@ public class vehiculosControlador {
             }
         }
         return datosTemporal;
+    }
+    
+    public static Vehiculo buscar(String placa){
+        for (int i = 0; i < datos.length; i++) {
+            Vehiculo tmp=datos[i];
+            if (tmp!=null && tmp.getPlaca().equals(placa)) {
+                return tmp;
+            }
+        }
+        return null;
     }
     
 }
